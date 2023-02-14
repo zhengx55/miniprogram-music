@@ -2,3 +2,10 @@
   width: 100%;
   height: auto;
 }
+.playlist-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+  flex-direction: row;
+}

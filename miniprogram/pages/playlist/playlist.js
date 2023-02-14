@@ -1,4 +1,5 @@
 // pages/playlist/playlist.js
+const MAX_LIMIT = 15
 Page({
 
   /**
@@ -13,14 +14,31 @@ Page({
     },
     {
       url: 'http://p1.music.126.net/Yo-FjrJTQ9clkDkuUCTtUg==/109951164169441928.jpg',
-    }]
+    }],
+    playList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    wx.showLoading({
+      title: 'Loading...',
+    })
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'music',
+      data: {
+        start: 0,
+        count: MAX_LIMIT
+      }
+    }).then((res) => {
+      console.log(res)
+      this.setData({
+        playList:res.result.data
+      })
+      wx.hideLoading()
+    })
   },
 
   /**
