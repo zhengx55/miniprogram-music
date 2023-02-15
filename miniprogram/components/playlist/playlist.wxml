@@ -1,5 +1,5 @@
 <!--components/playlist/playlist.wxml-->
-<view class="playlist-container">
+<view class="playlist-container" bind:tap="goToMusicList">
   <image src="{{item.picUrl}}" mode="" class="playlist-image" />
   <view class="playcount">
     <image src="/images/3-3_headset.svg" mode="widthFix" class="headset" />

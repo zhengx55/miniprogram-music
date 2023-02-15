@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showModal: false,
   },
 
   /**
@@ -15,6 +15,46 @@ Page({
 
   },
 
+  handlePublish() {
+    //检查用户是否授权
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting["scope.userInfo"]) {
+          // this.setData({
+          //   showModal: true
+          // })
+          // already authraized 
+          // fetch avatar, username... 
+          wx.getUserInfo({
+            success: (res) => {
+              this.handleLoginSuccess({
+                detail: res.userInfo
+              })
+            }
+          })
+        } else {
+          this.setData({
+            showModal: true
+          })
+        }
+      }
+    })
+
+  },
+
+  handleLoginSuccess(event) {
+    const { detail } = event
+    console.log(detail)
+    wx.navigateTo({
+      url: `../edit/edit?nickName=${detail.nickName}&avatar=${detail.avatarUrl}`,
+    })
+  },
+  handleLoginFail() {
+    wx.showModal({
+      title: '用户未授权',
+      content: '发布内容需要您的账号授权',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

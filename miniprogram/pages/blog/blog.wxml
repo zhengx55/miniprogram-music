@@ -1,2 +1,12 @@
-<!--pages/blog/blog.wxml-->
-<text>pages/blog/blog.wxml</text>
+<view class="container">
+  <view class="header">
+    <view class="publish-container">
+      <image class="post-icon" src="/images/post.png" mode="aspectFit" bindtap="handlePublish" />
+    </view>
+    <view class="search-container">
+      <my-search />
+    </view>
+  </view>
+  <my-login showModal='{{showModal}}' bind:loginsuccess="handleLoginSuccess" bind:loginfail="handleLoginFail">
+  </my-login>
+</view>

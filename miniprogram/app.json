@@ -2,7 +2,9 @@
   "pages": [
     "pages/playlist/playlist",
     "pages/profile/profile",
-    "pages/blog/blog"
+    "pages/blog/blog",
+    "pages/list/list",
+    "pages/edit/edit"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -13,6 +15,8 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "color": "#333",
+    "selectedColor": "d43c33",
     "list": [
       {
         "pagePath": "pages/playlist/playlist",
@@ -22,7 +26,7 @@
       },
       {
         "pagePath": "pages/blog/blog",
-        "text": "博客",
+        "text": "发现",
         "iconPath": "images/blog.png",
         "selectedIconPath": "images/blog_a.png"
       },

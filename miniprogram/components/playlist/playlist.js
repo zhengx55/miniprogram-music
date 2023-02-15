@@ -27,6 +27,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    goToMusicList(){
+      wx.navigateTo({
+        // page path
+        url:`../../pages/list/list?musicId=${this.properties.item.id}`,
+        // parameters
+
+      })
+    },
     _parsePlaycount(num, decimal) {
       let numStr = num.toString().split('.')[0]
       if (numStr.length < 6) {

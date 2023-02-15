@@ -1,0 +1,6 @@
+<view class="modal" hidden="{{!showModal}}">
+  <view class="panel">
+    <image src="/images/close.png" mode="aspectFit" class="close-icon" bindtap="handleClose" />
+    <slot name="modal-cotent"></slot>
+  </view>
+</view>
