@@ -7,6 +7,13 @@
       <my-search />
     </view>
   </view>
+  <view class="blog-list">
+    <block wx:for="{{blogList}}" wx:key="_id">
+      <view class="blog-panel">
+        <my-card blog="{{item}}" />
+      </view>
+    </block>
+  </view>
   <my-login showModal='{{showModal}}' bind:loginsuccess="handleLoginSuccess" bind:loginfail="handleLoginFail">
   </my-login>
 </view>

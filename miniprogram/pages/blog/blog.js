@@ -6,13 +6,30 @@ Page({
    */
   data: {
     showModal: false,
+    blogList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this._loadBlogList()
+  },
 
+  _loadBlogList() {
+    wx.cloud.callFunction({
+      name: 'blog',
+      data: {
+        $url: 'blogList',
+        start: 0,
+        count: 10,
+      }
+    }).then((res) => {
+      console.log(res)
+      this.setData({
+        blogList: this.data.blogList.concat(res.result),
+      })
+    })
   },
 
   handlePublish() {
