@@ -44,7 +44,6 @@ Page({
 
   handleLoginSuccess(event) {
     const { detail } = event
-    console.log(detail)
     wx.navigateTo({
       url: `../edit/edit?nickName=${detail.nickName}&avatar=${detail.avatarUrl}`,
     })

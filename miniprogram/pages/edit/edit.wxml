@@ -1,2 +1,19 @@
-<!--pages/edit/edit.wxml-->
-<text>pages/edit/edit.wxml</text>
+<view class="container">
+  <textarea value="" placeholder="分享新鲜事..." class="post-area" bindfocus="onFocusHandler" bindblur="onBlurHandler" bindinput="onInputHandler" maxlength="140" auto-focus />
+  <view class="image-list">
+    <block wx:for="{{uploadedImage}}" wx:key="*this">
+      <view class="image-wrap">
+        <image src="{{item}}" mode="aspectFill" class="image" bindtap="onPreviewHandler" data-imgsrc="{{item}}" />
+        <image class="close-icon" src="/images/close_white.png" mode="aspectFit" bindtap="onDeleteHandler" data-index="{{index}}" />
+      </view>
+    </block>
+    <view class="image-wrap selectphoto" hidden="{{!showSelect}}" bindtap="onSelectImage">
+      <image src="/images/add.png" mode="aspectFill" class="add-icon" />
+    </view>
+  </view>
+</view>
+
+<view class="footer" style="bottom:{{footerBottom}}px">
+  <text class="words-count">{{wordsNum}}</text>
+  <button class="send" bindtap="onSendHandler">发送</button>
+</view>
