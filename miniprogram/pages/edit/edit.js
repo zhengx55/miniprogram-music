@@ -148,6 +148,7 @@ Page({
     }
     wx.showLoading({
       title: 'Loading...',
+      mask: true
     })
     let promiseTask = []
     let fileIds = []
@@ -181,7 +182,12 @@ Page({
         wx.showToast({
           title: '发布成功！',
         })
+        //返回blog页面并刷新
         wx.navigateBack()
+        const pages = getCurrentPages()
+        // 取上级页面
+        const blog_page = pages[pages.length - 2]
+        blog_page.onPullDownRefresh()
       }).catch((err) => {
         wx.hideLoading()
         wx.showToast({

@@ -15,7 +15,7 @@
   </view>
   <view class="blog-img">
     <block wx:for="{{blog.img}}" wx:key="index">
-      <image class="img" src="{{item}}" mode="aspectFill" bindtap="onPreviewHandler" data-imgsrc="{{item}}"  />
+      <image class="img" src="{{item}}" mode="aspectFill" catchtap="onPreviewHandler" data-imgsrc="{{item}}" />
     </block>
   </view>
 </view>

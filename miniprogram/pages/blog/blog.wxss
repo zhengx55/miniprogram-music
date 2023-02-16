@@ -38,3 +38,7 @@
   margin-bottom: 20rpx;
   box-sizing: border-box;
 }
+
+page {
+  background-color: #f1f1f1;
+}

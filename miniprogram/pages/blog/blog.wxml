@@ -10,10 +10,11 @@
   <view class="blog-list">
     <block wx:for="{{blogList}}" wx:key="_id">
       <view class="blog-panel">
-        <my-card blog="{{item}}" />
+        <my-card bindtap="toCommentPage" blog="{{item}}" data-id="{{item._id}}" />
       </view>
     </block>
   </view>
+  
   <my-login showModal='{{showModal}}' bind:loginsuccess="handleLoginSuccess" bind:loginfail="handleLoginFail">
   </my-login>
 </view>

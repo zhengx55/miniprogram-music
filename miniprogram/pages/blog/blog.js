@@ -6,7 +6,8 @@ Page({
    */
   data: {
     showModal: false,
-    blogList: []
+    blogList: [],
+    start: 0,
   },
 
   /**
@@ -17,18 +18,22 @@ Page({
   },
 
   _loadBlogList() {
+    wx.showLoading({
+      title: '读取中...',
+    })
     wx.cloud.callFunction({
       name: 'blog',
       data: {
         $url: 'blogList',
-        start: 0,
-        count: 10,
+        start: this.data.start,
+        count: 5,
       }
     }).then((res) => {
-      console.log(res)
       this.setData({
         blogList: this.data.blogList.concat(res.result),
+        start: this.data.start + this.data.blogList.concat(res.result).length,
       })
+      wx.hideLoading()
     })
   },
 
@@ -71,6 +76,12 @@ Page({
       content: '发布内容需要您的账号授权',
     })
   },
+
+  toCommentPage(event) {
+    wx.navigateTo({
+      url: `../../pages/comment/comment?id=${event.target.dataset.id}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -103,14 +114,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.setData({
+      start: 0,
+      blogList: []
+    })
+    this._loadBlogList()
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    this._loadBlogList()
   },
 
   /**
