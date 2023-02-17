@@ -1,8 +1,8 @@
 {
   "usingComponents": {
     "my-search": "/components/search/search",
-    "my-login": "/components/login/login",
-    "my-card": "/components/blogCard/blogCard"
+    "my-card": "/components/blogCard/blogCard",
+    "my-control": "/components/control/control"
   },
   "navigationBarTitleText": "发现",
   "enablePullDownRefresh": true

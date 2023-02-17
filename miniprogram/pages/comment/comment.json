@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "my-card": "/components/blogCard/blogCard",
+    "my-ctrl": "/components/control/control"
+  },
+  "navigationBarTitleText": "正文"
 }

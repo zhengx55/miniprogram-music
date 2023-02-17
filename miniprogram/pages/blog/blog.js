@@ -1,4 +1,5 @@
 // pages/blog/blog.js
+let keyword = ""
 Page({
 
   /**
@@ -24,6 +25,7 @@ Page({
     wx.cloud.callFunction({
       name: 'blog',
       data: {
+        keyword,
         $url: 'blogList',
         start: this.data.start,
         count: 5,
@@ -37,31 +39,32 @@ Page({
     })
   },
 
+  onSearchHandler(event) {
+    keyword = event.detail.keywords
+    this.setData({
+      start: 0,
+      blogList: []
+    })
+    this._loadBlogList()
+  },
+
   handlePublish() {
     //检查用户是否授权
-    wx.getSetting({
+    wx.getUserProfile({
+      desc: 'desc',
       success: (res) => {
-        if (res.authSetting["scope.userInfo"]) {
-          // this.setData({
-          //   showModal: true
-          // })
-          // already authraized 
-          // fetch avatar, username... 
-          wx.getUserInfo({
-            success: (res) => {
-              this.handleLoginSuccess({
-                detail: res.userInfo
-              })
-            }
-          })
-        } else {
-          this.setData({
-            showModal: true
-          })
-        }
+        this.handleLoginSuccess({
+          detail: res.userInfo
+        })
+      },
+      fail: (e) => {
+        wx.showModal({
+          title: '未授权',
+          content: '需授权才能进行发布',
+
+        })
       }
     })
-
   },
 
   handleLoginSuccess(event) {

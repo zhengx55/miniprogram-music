@@ -1,0 +1,17 @@
+<view class="control">
+  <view bindtap="onCommentHandler" class="ctrl-item">
+    <image src="/images/comment.png" mode="aspectFit" class="img" />
+    <text>评论</text>
+  </view>
+  <view class="ctrl-item share" bindtap="onShareHandler">
+    <image src="/images/share.png" mode="aspectFit" class="img" />
+    <text>分享</text>
+  </view>
+</view>
+<comment-modal showModal="{{showCommentModal}}">
+  <!-- 模版推送 -->
+  <form slot="modal-cotent" bindsubmit="onSendHandler">
+    <textarea maxlength="140" auto-focus value="{{comment}}" name="content" class="comment-area" placeholder="请留下你的评论" />
+    <button class="send-comment" form-type="submit">发送</button>
+  </form>
+</comment-modal>

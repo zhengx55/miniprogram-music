@@ -17,7 +17,7 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#333",
-    "selectedColor": "d43c33",
+    "selectedColor": "#d43c33",
     "list": [
       {
         "pagePath": "pages/playlist/playlist",

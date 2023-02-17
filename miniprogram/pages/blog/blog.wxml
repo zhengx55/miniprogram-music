@@ -4,17 +4,18 @@
       <image class="post-icon" src="/images/post.png" mode="aspectFit" bindtap="handlePublish" />
     </view>
     <view class="search-container">
-      <my-search />
+      <my-search bind:search='onSearchHandler' />
     </view>
   </view>
   <view class="blog-list">
     <block wx:for="{{blogList}}" wx:key="_id">
       <view class="blog-panel">
         <my-card bindtap="toCommentPage" blog="{{item}}" data-id="{{item._id}}" />
+        <my-control blogId="{{item._id}}" />
       </view>
     </block>
   </view>
-  
+
   <my-login showModal='{{showModal}}' bind:loginsuccess="handleLoginSuccess" bind:loginfail="handleLoginFail">
   </my-login>
 </view>
